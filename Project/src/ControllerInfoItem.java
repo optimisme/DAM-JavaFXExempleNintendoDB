@@ -1,21 +1,20 @@
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class ControllerListItem {
-    
+public class ControllerInfoItem  {
+
     @FXML
     private ImageView img;
 
     @FXML
+    private Label title = new Label();
+
+    @FXML
     private Label text = new Label();
-
-    public void setText(String text) {
-
-        // Estableix el contingut del Label
-        this.text.setText(text);
-    }
 
     public void setImage(String resourceName) {
 
@@ -25,5 +24,17 @@ public class ControllerListItem {
 
         // Estableix la imatge a l'ImageView
         img.setImage(image);
+    }
+
+    public void setTitle(String text) {
+
+        // Estableix el contingut del Label
+        this.title.setText(text);
+    }
+
+    public void setText(String text) {
+
+        // Estableix el contingut del Label
+        this.text.setText(text);
     }
 }
