@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -15,11 +16,17 @@
                <font>
                   <Font size="20.0" />
                </font>
+               <VBox.margin>
+                  <Insets top="25.0" />
+               </VBox.margin>
             </Label>
-            <Label fx:id="text" alignment="TOP_CENTER" prefHeight="172.0" style="-fx-background-color: transparent;" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." wrapText="true">
+            <Label fx:id="text" alignment="TOP_CENTER" prefHeight="172.0" style="-fx-background-color: transparent;" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." textAlignment="CENTER" wrapText="true">
                <font>
                   <Font size="16.0" />
                </font>
+               <VBox.margin>
+                  <Insets left="25.0" right="25.0" top="25.0" />
+               </VBox.margin>
             </Label>
          </children>
       </VBox>
