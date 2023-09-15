@@ -26,6 +26,6 @@ Temporary Items
 .apdisk
 bin/*
 
-# Ignore release folder
+# Ignore release folder.
 Release/
 node_modules
