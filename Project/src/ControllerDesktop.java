@@ -19,7 +19,7 @@ public class ControllerDesktop implements Initializable {
     private ChoiceBox<String> choiceBox;
 
     @FXML
-    private VBox yPane = new VBox();
+    private VBox yPane;
 
     @FXML
     private AnchorPane info;
