@@ -62,7 +62,7 @@ public class ControllerDesktop implements Initializable {
                 System.out.println("ControllerDesktop: Error loading data.");
             } else {
                 try {
-                    showList(opcio);
+                    showList();
                 } catch (Exception e) {
                     System.out.println("ControllerDesktop: Error showing list.");
                 }
@@ -80,20 +80,15 @@ public class ControllerDesktop implements Initializable {
         yPane.getChildren().add(progressIndicator);
     }
 
-    public void showList(String opcioCarregada) throws Exception  {
+    public void showList() throws Exception  {
 
-        // Si s'ha carregat una altra opció, no cal fer res
-        // (perquè el callback pot arribar després de que l'usuari hagi canviat d'opció)
         String opcioSeleccionada = choiceBox.getValue();
-        if (opcioCarregada.compareTo(opcioSeleccionada) != 0) {
-            return;
-        }
 
         // Obtenir una referència a l'ojecte AppData que gestiona les dades
         AppData appData = AppData.getInstance();
 
         // Obtenir les dades de l'opció seleccionada
-        JSONArray dades = appData.getData(opcioCarregada);
+        JSONArray dades = appData.getData(opcioSeleccionada);
         
         // Carregar la plantilla
         URL resource = this.getClass().getResource("assets/template_list_item.fxml");
