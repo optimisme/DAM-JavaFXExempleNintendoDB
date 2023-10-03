@@ -127,8 +127,12 @@ public class AppData {
                 e.printStackTrace();
                 return null;
             }
-        }).thenAcceptAsync(content -> {
-            // This will be executed on the JavaFX Application Thread
+        })
+        .exceptionally(ex -> {
+            ex.printStackTrace();
+            return null;
+        })
+        .thenAcceptAsync(content -> {
             callBack.accept(content);
         }, Platform::runLater);
     }
