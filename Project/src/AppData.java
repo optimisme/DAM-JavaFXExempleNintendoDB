@@ -3,6 +3,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.nio.charset.StandardCharsets;
+import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
 
 import org.json.JSONArray;
@@ -107,11 +108,11 @@ public class AppData {
     public void loadData(String dataFile, Consumer<String> callBack) {
 
         // Use a thread to avoid blocking the UI
-        new Thread(() -> {
+        CompletableFuture.supplyAsync(() -> {
             try {
                 // Wait a second to simulate a long loading time
-                Thread.sleep(1000);  
-    
+                Thread.sleep(5000);
+
                 // Load the data from the assets file
                 InputStream is = getClass().getResourceAsStream(dataFile);
                 Reader reader = new InputStreamReader(is, StandardCharsets.UTF_8);
@@ -121,19 +122,14 @@ public class AppData {
                 while ((bytesRead = reader.read(buffer)) != -1) {
                     content.append(buffer, 0, bytesRead);
                 }
-
-                // Call the callback function on the UI thread (Only works on JavaFX)
-                Platform.runLater(()->{
-                    callBack.accept(content.toString());
-                });
-
-            } catch (InterruptedException e) {
-                callBack.accept(null);
+                return content.toString();
+            } catch (InterruptedException | IOException e) {
                 e.printStackTrace();
-            } catch (IOException e) {
-                callBack.accept(null);
-                e.printStackTrace();
+                return null;
             }
-        }).start();
+        }).thenAcceptAsync(content -> {
+            // This will be executed on the JavaFX Application Thread
+            callBack.accept(content);
+        }, Platform::runLater);
     }
 }
