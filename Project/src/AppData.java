@@ -111,7 +111,7 @@ public class AppData {
         CompletableFuture.supplyAsync(() -> {
             try {
                 // Wait a second to simulate a long loading time
-                Thread.sleep(5000);
+                Thread.sleep(1000);
 
                 // Load the data from the assets file
                 InputStream is = getClass().getResourceAsStream(dataFile);
